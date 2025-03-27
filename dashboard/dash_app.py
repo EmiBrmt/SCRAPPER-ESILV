@@ -47,6 +47,28 @@ app.layout = html.Div(style={
         "marginBottom": "10px"
     }),
 
+    # --- Texte explicatif élégant ---
+    html.Div(style={
+        "textAlign": "center",
+        "marginBottom": "30px",
+        "padding": "10px 100px",
+        "lineHeight": "1.6",
+        "color": "#c9d1d9",
+        "fontSize": "16px"
+    }, children=[
+        html.P(
+            "Bienvenue sur le Tracker S&P 500, votre fenêtre en temps réel sur l’un des indices boursiers "
+            "les plus influents au monde. Dans un univers où chaque seconde compte, Emilie et Julie capturent en direct "
+            "les fluctuations du marché afin d’offrir une vision claire et précise (buy high sell low) "
+           
+        ),
+        html.P(
+            " Mettez votre plus belle doudoune sans manches, prenez votre café à emporter, "
+            "et plongez au cœur des marchés financiers"
+        )
+    ]),
+    # -------------------------------
+
     html.Div(id="last-price", style={
         "textAlign": "center",
         "fontSize": "24px",
@@ -55,7 +77,7 @@ app.layout = html.Div(style={
     }),
 
     dcc.Graph(id="price-graph", config={"displayModeBar": False}),
-    dcc.Interval(id="interval", interval=2*60*1000, n_intervals=0)  # 2 minutes
+    dcc.Interval(id="interval", interval=2*60*1000, n_intervals=0)  # toutes les 2 minutes
 ])
 
 
