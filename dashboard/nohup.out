@@ -1,0 +1,80 @@
+Dash is running on http://127.0.0.1:8050/
+
+ * Serving Flask app 'dash_app'
+ * Debug mode: on
+Traceback (most recent call last):
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/dash_app.py", line 31, in <module>
+    app.run_server(host="0.0.0.0", port=8050, debug=True)
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/.venv/lib64/python3.9/site-packages/dash/_obsolete.py", line 22, in __getattr__
+    raise err.exc(err.message)
+dash.exceptions.ObsoleteAttributeException: app.run_server has been replaced by app.run
+Dash is running on http://0.0.0.0:8050/
+
+ * Serving Flask app 'dash_app'
+ * Debug mode: on
+/home/ec2-user/SCRAPPER-ESILV/dashboard/dash_app.py:11: UserWarning:
+
+Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+
+/home/ec2-user/SCRAPPER-ESILV/dashboard/dash_app.py:19: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["timestamp"] = pd.to_datetime(df["timestamp"])
+Traceback (most recent call last):
+  File "conversion.pyx", line 326, in pandas._libs.tslibs.conversion._TSObject.ensure_reso
+  File "np_datetime.pyx", line 683, in pandas._libs.tslibs.np_datetime.convert_reso
+OverflowError: result would overflow
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/dash_app.py", line 19, in <module>
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/.venv/lib64/python3.9/site-packages/pandas/core/tools/datetimes.py", line 1067, in to_datetime
+    values = convert_listlike(arg._values, format)
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/.venv/lib64/python3.9/site-packages/pandas/core/tools/datetimes.py", line 435, in _convert_listlike_datetimes
+    result, tz_parsed = objects_to_datetime64(
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/.venv/lib64/python3.9/site-packages/pandas/core/arrays/datetimes.py", line 2398, in objects_to_datetime64
+    result, tz_parsed = tslib.array_to_datetime(
+  File "tslib.pyx", line 414, in pandas._libs.tslib.array_to_datetime
+  File "tslib.pyx", line 596, in pandas._libs.tslib.array_to_datetime
+  File "tslib.pyx", line 571, in pandas._libs.tslib.array_to_datetime
+  File "conversion.pyx", line 332, in pandas._libs.tslibs.conversion._TSObject.ensure_reso
+pandas._libs.tslibs.np_datetime.OutOfBoundsDatetime: Out of bounds nanosecond timestamp:  5 710, at position 0
+/home/ec2-user/SCRAPPER-ESILV/dashboard/dash_app.py:19: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["timestamp"] = pd.to_datetime(df["timestamp"])
+Traceback (most recent call last):
+  File "conversion.pyx", line 326, in pandas._libs.tslibs.conversion._TSObject.ensure_reso
+  File "np_datetime.pyx", line 683, in pandas._libs.tslibs.np_datetime.convert_reso
+OverflowError: result would overflow
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/dash_app.py", line 19, in <module>
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/.venv/lib64/python3.9/site-packages/pandas/core/tools/datetimes.py", line 1067, in to_datetime
+    values = convert_listlike(arg._values, format)
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/.venv/lib64/python3.9/site-packages/pandas/core/tools/datetimes.py", line 435, in _convert_listlike_datetimes
+    result, tz_parsed = objects_to_datetime64(
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/.venv/lib64/python3.9/site-packages/pandas/core/arrays/datetimes.py", line 2398, in objects_to_datetime64
+    result, tz_parsed = tslib.array_to_datetime(
+  File "tslib.pyx", line 414, in pandas._libs.tslib.array_to_datetime
+  File "tslib.pyx", line 596, in pandas._libs.tslib.array_to_datetime
+  File "tslib.pyx", line 571, in pandas._libs.tslib.array_to_datetime
+  File "conversion.pyx", line 332, in pandas._libs.tslibs.conversion._TSObject.ensure_reso
+pandas._libs.tslibs.np_datetime.OutOfBoundsDatetime: Out of bounds nanosecond timestamp:  5 710, at position 0
+Traceback (most recent call last):
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/dash_app.py", line 25, in <module>
+    df["timestamp"] = pd.to_datetime(
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/.venv/lib64/python3.9/site-packages/pandas/core/tools/datetimes.py", line 1067, in to_datetime
+    values = convert_listlike(arg._values, format)
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/.venv/lib64/python3.9/site-packages/pandas/core/tools/datetimes.py", line 433, in _convert_listlike_datetimes
+    return _array_strptime_with_fallback(arg, name, utc, format, exact, errors)
+  File "/home/ec2-user/SCRAPPER-ESILV/dashboard/.venv/lib64/python3.9/site-packages/pandas/core/tools/datetimes.py", line 467, in _array_strptime_with_fallback
+    result, tz_out = array_strptime(arg, fmt, exact=exact, errors=errors, utc=utc)
+  File "strptime.pyx", line 501, in pandas._libs.tslibs.strptime.array_strptime
+  File "strptime.pyx", line 451, in pandas._libs.tslibs.strptime.array_strptime
+  File "strptime.pyx", line 583, in pandas._libs.tslibs.strptime._parse_with_format
+ValueError: time data "5 710" doesn't match format "%Y-%m-%d %H:%M:%S", at position 0. You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.

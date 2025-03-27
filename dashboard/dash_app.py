@@ -1,31 +1,37 @@
+import pandas as pd
 import dash
 from dash import dcc, html
-from dash.dependencies import Input, Output
-import pandas as pd
 import plotly.express as px
 
+# === Chargement manuel ligne par ligne ===
+timestamps = []
+prices = []
+
+with open("/home/ec2-user/SCRAPPER-ESILV/scraper/sp500_prices.csv", encoding="utf-8") as f:
+    for line in f:
+        parts = line.strip().split(",", 1)  # couper UNIQUEMENT à la première virgule
+        if len(parts) == 2:
+            ts = parts[0].strip()
+            price = parts[1].strip().replace(" ", "").replace(",", ".")
+            try:
+                timestamps.append(pd.to_datetime(ts, format="%Y-%m-%d %H:%M:%S"))
+                prices.append(float(price))
+            except Exception as e:
+                print(f"Ligne ignorée : {line.strip()} - Erreur : {e}")
+
+# === Création du DataFrame final ===
+df = pd.DataFrame({"timestamp": timestamps, "price": prices})
+
+# === Création du graphique ===
+fig = px.line(df, x="timestamp", y="price", title="Évolution du prix du S&P 500")
+
+# === App Dash ===
 app = dash.Dash(__name__)
-
-def load_data():
-    df = pd.read_csv('../scraper/sp500_prices.csv', names=["Timestamp", "Price"], header=None)
-    df['Timestamp'] = pd.to_datetime(df['Timestamp'])
-    df['Price'] = df['Price'].astype(str).str.replace(' ', '').str.replace(',', '.').astype(float)
-    return df
-
-app.layout = html.Div(children=[
+app.layout = html.Div([
     html.H1("Évolution du prix du S&P 500"),
-    dcc.Graph(id='price-graph'),
-    dcc.Interval(id='interval-component', interval=5*60*1000, n_intervals=0)
+    dcc.Graph(figure=fig)
 ])
 
-@app.callback(
-    Output('price-graph', 'figure'),
-    [Input('interval-component', 'n_intervals')]
-)
-def update_graph(n_intervals):
-    df = load_data()
-    fig = px.line(df, x='Timestamp', y='Price', title='Prix du S&P 500')
-    return fig
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# === Run server ===
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8050, debug=True)
