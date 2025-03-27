@@ -78,3 +78,13 @@ ValueError: time data "5 710" doesn't match format "%Y-%m-%d %H:%M:%S", at posit
     - passing `format` if your strings have a consistent format;
     - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
     - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+Dash is running on http://0.0.0.0:8050/
+
+ * Serving Flask app 'dash_app'
+ * Debug mode: on
+Dash is running on http://0.0.0.0:8050/
+
+ * Serving Flask app 'dash_app'
+ * Debug mode: on
+Address already in use
+Port 8050 is in use by another program. Either identify and stop that program, or start the server with a different port.
